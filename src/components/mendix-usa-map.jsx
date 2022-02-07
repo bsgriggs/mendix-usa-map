@@ -31,7 +31,7 @@ const Mendix_USA_Map = props => {
     function calcHeatColor(hPercent) {
         if (hPercent !== undefined) {
             let calcH = Math.floor((1.0 - hPercent) * hRange + hOffset);
-            let hslString = `hsl(${calcH},${s}%,${l}%)`;
+            let hslString = `hsla(${calcH},${s}%,${l}%,100%)`;
             return hslString;
         } else {
             printLogs && console.error("USA Map - Unable to find heatPercent value, please check your data source");
@@ -72,13 +72,13 @@ const Mendix_USA_Map = props => {
                 customize={mapSettings()}
                 onClick={mapHandler}
             />
-            {showGradient && (
+            {showGradient && useHeatMap && (
                 <div
                     className="gradient"
                     style={{
                         width: width.trim() !== "" ? width.trim() : "100%",
-                        background: `linear-gradient(to right, hsl(${hRange + hOffset}, ${s}%, ${l}%) 0%, hsl(${0 +
-                            hOffset}, ${s}%, ${l}%) 100%)`
+                        background: `linear-gradient(to right, hsla(${hRange + hOffset},${s}%,${l}%,100%) 0%, hsla(${0 +
+                            hOffset},${s}%,${l}%,100%) 100%)`
                     }}
                 >
                     <span className="mx-text">0%</span>

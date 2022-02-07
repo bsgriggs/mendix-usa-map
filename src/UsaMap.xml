@@ -22,7 +22,7 @@
             </property>
             <property key="defaultFill" type="textTemplate" required="false">
                 <caption>Default State Color</caption>
-                <description>Color if data for that State is not provided. Use hsl(50,75%,50%) as default value for a heat map.</description>
+                <description>Color if data for that State is not provided. Use hsla(50,75%,50%,100%) as default value for a heat map.</description>
             </property>
             <property key="printLogs" type="boolean" defaultValue="true">
                 <caption>Print Error Logs?</caption>
@@ -43,7 +43,7 @@
             </property>
             <property key="stateColor" type="attribute" dataSource="states" >
                 <caption>State Color</caption>
-                <description>The Hex Value or CSS Color to fill the State (i.e. #2E2EFF or blue). This is only used if you're not using a Heat Map</description>
+                <description>The Hex Value or CSS Color to fill the State (i.e. #2E2EFF or blue). This is required if you're not using a Heat Map.</description>
                 <attributeTypes>
                     <attributeType name="String"/>
                 </attributeTypes>
@@ -71,14 +71,14 @@
                     <description>Displays a bar below the graph with all the possible colors.</description>
                 </property>
              </propertyGroup>
-            <propertyGroup caption="Heat Map Colors (HSLA)">
+            <propertyGroup caption="Heat Map Colors (HSL)">
                 <property key="hRange" type="integer" defaultValue="50">
                     <caption>H Range</caption>
                     <description></description>
                 </property>
                 <property key="hOffset" type="integer" defaultValue="0">
                     <caption>H Offset</caption>
-                    <description>Calculates the H value in HSL color encoding. This is calculated by multipying H Range by the Heat Percent then adding H Offset. The SUM of H Range and H Offset MUST be less than or equal to 240.</description>
+                    <description>Calculates the H value in HSL color encoding. This is calculated by Math.floor((1.0 - Heat Percent) * H Range + H Offset). The SUM of H Range and H Offset MUST be less than or equal to 240.</description>
                 </property>
                 <property key="s" type="integer" defaultValue="75">
                     <caption>S</caption>
