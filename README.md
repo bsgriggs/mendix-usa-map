@@ -3,14 +3,14 @@
 
 # Features
   This widget has 2 primary use cases
-### Standard
-  Shows a map of the USA with each state having it's own defined color. You can specify an on-click action that will trigger an action using the provided state object (i.e. you can click on Indiana and the action executed will be specific for Indiana).
+### Selection
+  Shows a map of the USA with each state having it's own defined color. You can specify an on-click action that will trigger an action for that one State (i.e. you can click on Indiana and the action executed will be specific for Indiana).
 
 ### Heat Map
-  Shows a map of the USA with each state with a variable color to show how it compares to other States. You can specify an on-click action that will trigger an action using the provided state object (i.e. you can click on Indiana and the action executed will be specific for Indiana).
+  Shows a map of the USA with each state with a variable color to show how it compares to other States. You can still specify an on-click action.
 
 # Configuration
-The following is an explaination of each configurable field.
+The following is an explaination of each configurable field and how the Heat Map colors are calculated.
 
 ### General Tab
   **SVG Map Title -** The value that gets set on the SVG <title> tag. If you'd like a title to be rendered on the page, then use the Mendix 'text' widget.  
@@ -49,7 +49,7 @@ The following is an explaination of each configurable field.
   **5)** Run the project and view the graph. Then, make adjustments to the Width and Height as you see fit.  
 
 ### Heat Map
-  **1)** In the General tab, Set Width and Height to 100%. Set the Default State Color to hsl(**x**,75%,50%).
+  **1)** In the General tab, Set Width and Height to 100%. Set the Default State Color to hsl(**x**,75%,50%).  
   **2)** In the Data Source tab, create a microflow that creates a list of non-persistent objects with the State Abbreviation, HeatPercent, and any other data you want to use when the user clicks on that particular State. Heat Percent should be either how that particular state compares to 0 and the maximum value (i.e. $IteratorState/Value div $MaximumStateValue) or how that particular state compares to the lowest value and the maximum value (i.e. ($IteratorState/Value - $MinimumStateValue) div ($MaximumStateValue - $MinimumStateValue). Be sure not to divide by zero!!  
   **3)** Set State Abbreviation the attribute on your non-persistent entity.  
   **4)** Set an On Click action for what you want to happen when a user clicks on a single State.  
@@ -60,7 +60,8 @@ The following is an explaination of each configurable field.
 [link to sandbox]
 
 # Issues, suggestions and feature requests
-[link to GitHub issues]
+https://github.com/bsgriggs/mendix-usa-map/issues
 
 # Development and contribution
-[specify contribute]
+React USA Map by Gabriela D'Ávila Ferrara https://www.npmjs.com/package/react-usa-map  
+  Mendix Interface by Benjamin Griggs
