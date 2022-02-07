@@ -73,7 +73,7 @@ The following is an explaination of each configurable field and how the Heat Map
   **6)** Run the project and view the graph. Then, make adjustments to the Width, Height, and the Heat Map Colors (Check the **Configuration** section to see how the colors are calculated) as you see fit. Be sure to update the Default State Color in the general tab by replace **x** with H Range + H Offset.  
 
 # Demo project
-[link to sandbox]
+https://usheatmap-sandbox.mxapps.io/
 
 # Issues, suggestions and feature requests
 https://github.com/bsgriggs/mendix-usa-map/issues
