@@ -35,9 +35,11 @@ The following is an explaination of each configurable field and how the Heat Map
   **H Offset -** A constant increase to the range.  
   **S -** The second parameter in the HSL function. This applies a scew to the function and would best be described by experimenting with the function in CSS.  
   **L -** The third parameter in the HSL function. This applies a scew to the function and would best be described by experimenting with the function in CSS.  
-    This widget calculates the variable color for each State using this formula:  
-  Math.floor((1.0 - HeatPercent) * H Range + H Offset)  
-  For example, configure the widget to use H Range = 50, H Offset = 20, S = 75, and L = 50. This would mean the lowest color (Heat Percent = 0.00) would be hsl(70,75%,50%) which is yellow-green and the highest color (Heat Percent = 1.00) would be hsl(20,75%,50%) which is yellow-orange. You might want to experiment with these using the CSS background-color: hsl(50,75%,50%); and play around with each parameter.
+  
+  **Color Calculation**  
+  This widget calculates the variable color for each State using this formula:  
+  Math.floor((1.0 - Heat Percent) * H Range + H Offset)  
+  For example, configure the widget to use H Range = 50, H Offset = 20, S = 75, and L = 50. This would mean the lowest color (Heat Percent = 0.00) would be hsl(70,75%,50%) which is yellow-green and the highest color (Heat Percent = 1.00) would be hsla(50,75%,50%,100%) which is yellow-orange. You might want to experiment with these using the CSS background-color: hsl(50,75%,50%); and play around with each parameter.
   
 
 # Setup
