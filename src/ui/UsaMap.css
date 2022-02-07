@@ -1,0 +1,22 @@
+/*
+Place your custom CSS here
+*/
+.mendix-usa-map path {
+    pointer-events: all;
+}
+
+.mendix-usa-map path:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.mendix-usa-map .gradient{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mendix-usa-map .gradient .mx-text {
+    padding: 0.5em;
+    font-weight: 600;
+}

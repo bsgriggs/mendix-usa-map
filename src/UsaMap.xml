@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="avertra.usamap.UsaMap" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>USA Map</name>
+    <description>https://www.npmjs.com/package/react-usa-map</description>
+    <icon/>
+    <properties>
+        <propertyGroup caption="General">
+            <property key="title" type="textTemplate" required="false">
+                <caption>SVG Map Title</caption>
+                <description></description>
+            </property>
+            <property key="width" type="textTemplate" required="false">
+                <caption>Width</caption>
+                <description></description>
+            </property>
+            <property key="height" type="textTemplate" required="false">
+                <caption>Height</caption>
+                <description></description>
+            </property>
+            <property key="defaultFill" type="textTemplate" required="false">
+                <caption>Default State Color</caption>
+                <description>Color if data for that State is not provided. Use hsl(50,75%,50%) as default value for a heat map.</description>
+            </property>
+            <property key="printLogs" type="boolean" defaultValue="true">
+                <caption>Print Error Logs?</caption>
+                <description>DISABLE FOR PRODUCTION. This will show validation errors in the broswer console.</description>
+            </property>
+        </propertyGroup>        
+        <propertyGroup caption="Data Source">
+            <property key="states" type="datasource" isList="true" required="true">
+                <caption>List of States</caption>
+                <description />
+            </property>
+            <property key="stateName" type="attribute" required="true" dataSource="states">
+                <caption>State Abbreviation</caption>
+                <description>The two character official abbreviation for a USA State (i.e. IN = Indiana, NY = New York).</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+            <property key="stateColor" type="attribute" dataSource="states" >
+                <caption>State Color</caption>
+                <description>The Hex Value or CSS Color to fill the State (i.e. #2E2EFF or blue). This is only used if you're not using a Heat Map</description>
+                <attributeTypes>
+                    <attributeType name="String"/>
+                </attributeTypes>
+            </property>
+            <property key="stateClick" type="action" dataSource="states">
+                <caption>On click</caption>
+                <description>Action performed when a particular State is clicked.</description>
+            </property>
+        </propertyGroup>
+        <propertyGroup caption="Heat Map">
+            <propertyGroup caption="General">
+                <property key="useHeatMap" type="boolean" defaultValue="false">
+                    <caption>Use Heat Map?</caption>
+                    <description></description>
+                </property>
+                <property key="heatPercent" type="attribute" dataSource="states" required="false">
+                    <caption>Heat Percent</caption>
+                    <description>The percentage of Heat for that particular State (0.0 - 1.0).</description>
+                    <attributeTypes>
+                        <attributeType name="Decimal"/>
+                    </attributeTypes>
+                </property>
+                <property key="showGradient" type="boolean" defaultValue="true">
+                    <caption>Show Gradient?</caption>
+                    <description>Displays a bar below the graph with all the possible colors.</description>
+                </property>
+             </propertyGroup>
+            <propertyGroup caption="Heat Map Colors (HSLA)">
+                <property key="hRange" type="integer" defaultValue="50">
+                    <caption>H Range</caption>
+                    <description></description>
+                </property>
+                <property key="hOffset" type="integer" defaultValue="0">
+                    <caption>H Offset</caption>
+                    <description>Calculates the H value in HSL color encoding. This is calculated by multipying H Range by the Heat Percent then adding H Offset. The SUM of H Range and H Offset MUST be less than or equal to 240.</description>
+                </property>
+                <property key="s" type="integer" defaultValue="75">
+                    <caption>S</caption>
+                    <description>The S value in HSL color coding (0 - 100).</description>
+                </property>
+                <property key="l" type="integer" defaultValue="50">
+                    <caption>L</caption>
+                    <description>The L value in HSL color coding. This is a fixed valu (0 - 100).</description>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+    </properties>
+</widget>
