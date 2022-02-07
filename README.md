@@ -2,16 +2,17 @@
   Mendix Pluggable Widget to provide an interface for https://www.npmjs.com/package/react-usa-map. 
 
 # Features
-  This widget has 2 primary use cases
-### Selection
-  Shows a map of the USA with each state having its own defined color. You can specify an on-click action that will trigger an action for that one State (i.e. you can click on Indiana and the action executed will be specific for Indiana).
-  ![Selection Mode Demo](https://github.com/bsgriggs/mendix-usa-map/blob/media/selection.png) 
-  ![Selection Mode On Click](https://github.com/bsgriggs/mendix-usa-map/blob/media/selection_onclick.png) 
-
+  This widget has 2 primary use cases:
+  
 ### Heat Map
   Shows a map of the USA with each state with a variable color to show how it compares to other States. You can still specify an on-click action.
   ![Heat Map Mode General](https://github.com/bsgriggs/mendix-usa-map/blob/media/heatmap_example.png) 
   ![Heat Map Mode On Click](https://github.com/bsgriggs/mendix-usa-map/blob/media/heatmap_click.png) 
+  
+### Selection
+  Shows a map of the USA with each state having its own defined color. You can specify an on-click action that will trigger an action for that one State (i.e. you can click on Indiana and the action executed will be specific for Indiana).
+  ![Selection Mode Demo](https://github.com/bsgriggs/mendix-usa-map/blob/media/selection.png) 
+  ![Selection Mode On Click](https://github.com/bsgriggs/mendix-usa-map/blob/media/selection_onclick.png) 
 
 # Configuration
 The following is an explanation of each configurable field and how the Heat Map colors are calculated.
@@ -56,14 +57,7 @@ The following is an explanation of each configurable field and how the Heat Map 
   Math.floor((1.0 - Heat Percent) * H Range + H Offset)  
   For example, configure the widget to use H Range = 50, H Offset = 20, S = 75, and L = 50. This would mean the lowest color (Heat Percent = 0.00) would be hsl(70,75%,50%) which is yellow-green and the highest color (Heat Percent = 1.00) would be hsla(50,75%,50%,100%) which is yellow-orange. You might want to experiment with these using the CSS background-color: hsl(50,75%,50%); and play around with each parameter.   
 
-# Setup
-### Standard
-  **1)** In the General tab, Set Width and Height to 100%.  
-  **2)** In the Data Source tab, create a microflow that creates a list of non-persistent objects with the State Abbreviation, State Color, and any other data you want to use when the user clicks on that particular State.  
-  **3)** Set State Abbreviation and State Color as the respective attributes of your non-persistent entity.  
-  **4)** Set an On Click action for what you want to happen when a user clicks on a single State.  
-  **5)** Run the project and view the graph. Then, make adjustments to the Width and Height as you see fit.  
-
+# Setup  
 ### Heat Map
   **1)** In the General tab, Set Width and Height to 100%. Set the Default State Color to hsla(**x**,75%,50%).  
   **2)** In the Data Source tab, create a microflow that creates a list of non-persistent objects with the State Abbreviation, HeatPercent, and any other data you want to use when the user clicks on that particular State. Heat Percent should be either how that particular state compares to 0 and the maximum value (i.e. $IteratorState/Value div $MaximumStateValue) or how that particular state compares to the lowest value and the maximum value (i.e. ($IteratorState/Value - $MinimumStateValue) div ($MaximumStateValue - $MinimumStateValue). Be sure not to divide by zero!!  
@@ -71,6 +65,14 @@ The following is an explanation of each configurable field and how the Heat Map 
   **4)** Set an On Click action for what you want to happen when a user clicks on a single State.  
   **5)** In the Heat Map tab, set Use Heat Map to "Yes". Select the HeatPercent on your non-persistent entity. Set Show Gradient to "Yes", so you can see the range of colors even if you don't have all the data.   
   **6)** Run the project and view the graph. Then, make adjustments to the Width, Height, and Heat Map Colors (Check the **Configuration** section to see how the colors are calculated) as you see fit. Be sure to update the Default State Color in the general tab by replacing **x** with H Range + H Offset.  
+  
+### Selection
+  **1)** In the General tab, Set Width and Height to 100%.  
+  **2)** In the Data Source tab, create a microflow that creates a list of non-persistent objects with the State Abbreviation, State Color, and any other data you want to use when the user clicks on that particular State.  
+  **3)** Set State Abbreviation and State Color as the respective attributes of your non-persistent entity.  
+  **4)** Set an On Click action for what you want to happen when a user clicks on a single State.  
+  **5)** Run the project and view the graph. Then, make adjustments to the Width and Height as you see fit.  
+
 
 # Demo project
 https://usheatmap-sandbox.mxapps.io/
