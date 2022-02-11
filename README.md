@@ -1,5 +1,6 @@
 # Mendix USA Map with Heat Map
   Mendix Pluggable Widget to provide an interface for https://www.npmjs.com/package/react-usa-map. 
+  *Note: This was built on Mendix version 9.6.2, but should work (in theory) on any Mendix 0 version*
 
 # Features
   This widget has 2 primary use cases:
