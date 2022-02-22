@@ -20,3 +20,8 @@ Place your custom CSS here
     padding: 0.5em;
     font-weight: 600;
 }
+
+.mendix-usa-map .full-map{
+    display: flex;
+    align-items: flex-end;
+}

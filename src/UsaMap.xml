@@ -12,12 +12,12 @@
                 <caption>SVG Map Title</caption>
                 <description></description>
             </property>
-            <property key="width" type="textTemplate" required="false">
-                <caption>Width</caption>
+             <property key="useTerritories" type="boolean" defaultValue="false">
+                <caption>Show Territories?</caption>
                 <description></description>
             </property>
-            <property key="height" type="textTemplate" required="false">
-                <caption>Height</caption>
+            <property key="useOnlyDC" type="boolean" defaultValue="false">
+                <caption>Show Only DC?</caption>
                 <description></description>
             </property>
             <property key="defaultFill" type="textTemplate" required="false">

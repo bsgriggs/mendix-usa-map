@@ -9,7 +9,6 @@ export default class UsaMap extends Component {
     }
 
     validateProps() {
-        console.log("props: ", this.props)
         let valid = true;
         if (this.props.useHeatMap) {
             if (this.props.hRange === undefined){
@@ -53,23 +52,26 @@ export default class UsaMap extends Component {
             valid = false;
             this.props.printLogs && console.error("USA Map - No State list provided, check your data source");
         }
+        if (this.props.useOnlyDC && this.props.useTerritories){
+            valid = false;
+            this.props.printLogs && console.error("USA Map - should be either 'Show Territories' or 'Show Only DC'");
+        }
         return valid;
     }
 
     render() {
         if (this.props.states.status === "available") {
             if (this.validateProps()){
-                console.log('Props: ',this.props)
                 return (
                     <Mendix_USA_Map
                         title={this.props.title.value}
-                        width={this.props.width.value}
-                        height={this.props.height.value}
                         defaultFill={this.props.defaultFill.value}
                         states={this.props.states}
                         stateName={this.props.stateName}
                         stateColor={this.props.stateColor}
                         useHeatMap={this.props.useHeatMap}
+                        useTerritories={this.props.useTerritories}
+                        useOnlyDC={this.props.useOnlyDC}
                         heatPercent={this.props.heatPercent}
                         hRange={this.props.hRange}
                         hOffset={this.props.hOffset}

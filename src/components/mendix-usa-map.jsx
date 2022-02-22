@@ -1,11 +1,10 @@
 import React, { Component, createElement } from "react";
-import USAMap from "react-usa-map";
+// import USAMap from "react-usa-map";
+import USAMap from "./USAMap";
 
 const Mendix_USA_Map = props => {
     const {
         title,
-        width,
-        height,
         defaultFill,
         states,
         stateName,
@@ -14,6 +13,8 @@ const Mendix_USA_Map = props => {
         className,
         style,
         useHeatMap,
+        useTerritories,
+        useOnlyDC,
         heatPercent,
         hRange,
         hOffset,
@@ -66,21 +67,21 @@ const Mendix_USA_Map = props => {
         <div className={"mendix-usa-map " + className} style={style}>
             <USAMap
                 title={title}
-                width={width.trim() !== "" ? width.trim() : "100%"}
-                height={height.trim() !== "" ? height.trim() : "100%"}
                 defaultFill={defaultFill}
                 customize={mapSettings()}
                 onClick={mapHandler}
+                useTerritories={useTerritories}
+                useOnlyDC={useOnlyDC}
             />
             {showGradient && useHeatMap && (
                 <div
                     className="gradient"
                     style={{
-                        width: width.trim() !== "" ? width.trim() : "100%",
+                        width: "100%",
                         background: `linear-gradient(to right, hsla(${hRange + hOffset},${s}%,${l}%,100%) 0%, hsla(${0 +
                             hOffset},${s}%,${l}%,100%) 100%)`
                     }}
-                >
+                > 
                     <span className="mx-text">0%</span>
                     <span className="mx-text">100%</span>
                 </div>
